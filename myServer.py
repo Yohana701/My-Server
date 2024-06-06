@@ -3,7 +3,9 @@ import discord
 import os
 import random 
 from ec2_metadata import ec2_metadata
+from dotenv import load_dotenv
 
+load_dotenv()
 
 #Initialize the Discord bot
 intents = discord.Intents.default()
@@ -42,16 +44,16 @@ async def on_message(message):
     # Check if the message is in the "random" channel
     if channel == "random": 
         # Respond to greetings
-        if user_message.lower() == "Hello":
-            await message.channel.send(f'Hi {username} Your EC2 Data: {ec2_metadata.region}') 
+        if user_message.lower() == "hello":
+            await message.channel.send(f'Hi {username} ') 
             return
         # other string options
-        elif user_message.lower() == "Aloha": 
+        elif user_message.lower() == "aloha": 
             await message.channel.send(f'Mahalo {username}') 
 
         # Returning instance data for the last conditional statement.
-        elif user_message.lower() == "EC2 Data": 
-            await message.channel.send("Your instance data is " + ec2_metadata) 
+        elif user_message.lower() == "ec2 data": 
+            await message.channel.send(f"Your instance data is  {ec2_metadata.instance} Your EC2 Data: {ec2_metadata.region}") 
 
 #Run the bot with the token
 client.run(token)
