@@ -53,7 +53,7 @@ async def on_message(message):
 
         # Returning instance data for the last conditional statement.
         elif user_message.lower() == "ec2 data": 
-            await message.channel.send(f"Your instance data is  {ec2_metadata.instance} Your EC2 Data: {ec2_metadata.region}") 
+            await message.channel.send(f"Your instance data is  {ec2_metadata.instance_id} Your EC2 Data: {ec2_metadata.region}") 
 
 #Run the bot with the token
 client.run(token)
